@@ -4,7 +4,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
 
-function App() {
+function Pagina1() {
   return (
     <div className="App">
       <header>
@@ -49,4 +49,4 @@ function App() {
     </div>
   );
 }
-export default App;
+export default Pagina1;
