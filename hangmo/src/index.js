@@ -12,6 +12,7 @@ ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <Router>
       <Routes>
+      <Route path="/" element={<App />} />
         <Route path="/app" element={<App />} />
         <Route path="/pagina1" element={<Pagina1 />} />
         <Route path="/pagina2" element={<Pagina2 />} />

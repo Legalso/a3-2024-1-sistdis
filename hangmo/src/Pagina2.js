@@ -8,7 +8,10 @@ function Pagina2() {
   return (
     <div className="App">
       <header>
-        <h1 id = "title">HANGMO</h1>
+      <h1 id="title">
+          <span style={{ color: "black" }}>HANG</span>
+          <span style={{ color: "red" }}>MO</span>
+        </h1>
         <div class="buttons">
           <Link to="/App">
             <button>Home</button>
