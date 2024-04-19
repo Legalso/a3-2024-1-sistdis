@@ -8,9 +8,9 @@ function Pagina2() {
   return (
     <div className="App">
       <header>
-        <h1>HANGMO</h1>
-        <div>
-          <Link to="/app">
+        <h1 id = "title">HANGMO</h1>
+        <div class="buttons">
+          <Link to="/App">
             <button>Home</button>
           </Link>
           <Link to="/pagina1">

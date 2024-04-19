@@ -3,14 +3,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
+import "./Pagina1";
+import "./Pagina2";
 
 function App() {
   return (
     <div className="App">
       <header>
-        <h1>HANGMO</h1>
-        <div>
-          <Link to="/app">
+        <h1 id="title">
+          <span style={{ color: "black" }}>HANG</span>
+          <span style={{ color: "white" }}>MO</span>
+        </h1>
+        <div class="buttons">
+          <Link to="/App">
             <button>Home</button>
           </Link>
           <Link to="/pagina1">

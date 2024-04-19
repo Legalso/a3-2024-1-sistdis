@@ -1,33 +1,37 @@
 body {
-  background-color: #282c34;
+  background-color: green;
 }
 
 header {
-  background-color: white;
-}
-
-footer {
-  background-color: blue;
-  /* margin-top: auto;
-  margin-bottom: auto; */
-  margin: 5rem 0 0 0;
-  padding: 0.7rem;
+  background-color: green;
+  padding-top: 0.05rem;
+  margin: 0 0 0 0;
   color: white;
   font-size: 1.5rem;
   font-weight: 400;
   text-align: center;
+  border-radius: 0 0 0 1rem;
 }
 
+.buttons {
+  display: flex;
+  justify-content: right;
+  text-align: right;
+  margin: 1rem;
+  padding: 0 0 0.5rem 0;
+  gap: 1rem;
+}
 
 .App {
   text-align: center;
+  background-color: #282c34;
 }
 
 #container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 58rem;
+  height: 40rem;
 }
 
 #initial-text {
@@ -38,9 +42,21 @@ footer {
 
 #black-square {
   background-color: grey;
-  width: 30rem;
-  height: 35rem;
+  width: 25rem;
+  height: 30rem;
   margin: 0 0 0 18rem;
+  border-radius: 1rem;
+}
+
+footer {
+  background-color: green;
+  margin: 5rem 0 0 0;
+  padding: 0.7rem;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-align: center;
+  border-radius: 1rem 1rem 0 0;
 }
 
 @media (max-width: 600px) {
