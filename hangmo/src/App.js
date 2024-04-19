@@ -3,8 +3,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
-import "./Pagina1";
-import "./Pagina2";
+import "./pagina1";
+import "./pagina2";
 
 function App() {
   return (
