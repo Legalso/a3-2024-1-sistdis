@@ -1,10 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import Pagina1 from './pagina1';
-import Pagina2 from './pagina2';
+import Login from './login';
+import Cadastro from './cadastro';
 import reportWebVitals from './reportWebVitals';
 
 const root = document.getElementById('root');
@@ -14,11 +14,11 @@ ReactDOM.createRoot(root).render(
       <Routes>
       <Route path="/" element={<App />} />
         <Route path="/app" element={<App />} />
-        <Route path="/pagina1" element={<Pagina1 />} />
-        <Route path="/pagina2" element={<Pagina2 />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<Cadastro />} />
       </Routes>
     </Router>
   </React.StrictMode>
 );
 
-reportWebVitals();
+reportWebVitals(console.log);

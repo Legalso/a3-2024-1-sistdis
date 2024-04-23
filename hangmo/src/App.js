@@ -3,8 +3,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
-import "./pagina1";
-import "./pagina2";
+import "./login";
+import "./cadastro";
 
 function App() {
   return (
@@ -15,14 +15,11 @@ function App() {
           <span style={{ color: "white" }}>MO</span>
         </h1>
         <div class="buttons">
-          <Link to="/App">
-            <button>Home</button>
+          <Link to="/login">
+            <button>LOGIN</button>
           </Link>
-          <Link to="/pagina1">
-            <button>Página 1</button>
-          </Link>
-          <Link to="/pagina2">
-            <button>Página 2</button>
+          <Link to="/cadastro">
+            <button>CADASTRO</button>
           </Link>
         </div>
       </header>
