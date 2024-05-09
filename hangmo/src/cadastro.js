@@ -11,6 +11,9 @@ import googlelogo from "./img/google.png";
 import facebooklogo from "./img/facebook.webp";
 
 function Cadastro() {
+  React.useEffect(() => {
+    document.title = "HANGMO - Cadastro";
+  }, []);
   return (
     <div className="App">
       <a href="./login">

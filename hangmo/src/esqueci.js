@@ -4,6 +4,9 @@ import "./hangmo";
 import logo from "./img/Logo.png";
 
 function Esqueci() {
+  React.useEffect(() => {
+    document.title = "HANGMO - Recuperação de senha";
+  }, []);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 

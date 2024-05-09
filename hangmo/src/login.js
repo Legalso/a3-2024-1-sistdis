@@ -11,6 +11,9 @@ import googlelogo from "./img/google.png";
 import facebooklogo from "./img/facebook.webp";
 
 function Login() {
+  React.useEffect(() => {
+    document.title = "HANGMO - Login";
+  }, []);
   return (
     <div className="App">
       <a href="./login">
