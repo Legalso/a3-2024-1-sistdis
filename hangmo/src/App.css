@@ -11,6 +11,7 @@ body {
 
 h1 {
   padding-top: 20px;
+  color: #ff6b00;
 }
 
 .App {
@@ -19,11 +20,16 @@ h1 {
 }
 
 #logo {
-  width: 25rem; /* tamnho do logo */
+  width: 22rem; /* tamanho do logo */
   height: auto; /* Isso mantém a proporção da imagem */
 }
 
-#container {
+#logo:hover {
+  transform: scale(0.99);
+  transition: transform 0.1s ease;
+}
+
+.container {
   color: black;
   display: flex;
   flex-direction: column;
@@ -38,6 +44,12 @@ h1 {
   margin-bottom: auto;
   margin-top: 0;
   border-radius: 2rem;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra */
+  border-bottom: 1rem;
+}
+
+#containerCadastro {
+  height: 37rem;
 }
 
 #loginpage {
@@ -62,9 +74,11 @@ h1 {
   border: none;
   height: 2.5rem;
   padding: 10px; /* Adiciona um espaçamento interno */
+  color: #ff6b00;
 }
 
 #forgetPassAndCreate {
+  margin-top: 1rem;
   width: 40rem;
   display: flex;
   justify-content: space-between;
@@ -78,8 +92,8 @@ h1 {
 
 #forgetPassAndCreate a:hover {
   color: #ff6b00;
-  transform: scale(1.1);
-  transition: transform 0.1s ease;
+  /* transform: scale(1.05);
+  transition: transform 0.1s ease; */
   text-decoration: none;
 }
 
@@ -102,6 +116,7 @@ h1 {
 }
 
 button {
+  margin-top: 1rem;
   --bg: #ff6b00;
   --text-color: #fff;
   position: relative;
@@ -130,6 +145,15 @@ button:active {
   box-shadow:
     #c0392b 0px 3px 2px,
     #000 0px 3px 5px;
+}
+
+#successMessage{
+  margin-top: 2rem;
+  padding: 10px;
+  border: 2px solid #d9d9d9;
+  background-color: #ff6b00;
+  border-radius: 2rem;
+  color: white;
 }
 
 footer {

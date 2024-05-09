@@ -17,9 +17,9 @@ function Login() {
         <img id="logo" src={logo} alt="Logo hangmo" />{" "}
       </a>
 
-      <div id="container">
+      <div className="container">
         <div id="loginpage">
-          <h2>Login</h2>
+          <h2>E-mail</h2>
           <div>
             <input
               className="login"
@@ -37,32 +37,38 @@ function Login() {
           </div>
         </div>
         <Link to="/hangmo">
-          <button id="entrarButton">Login</button>
+          <button id="entrarButton">Entrar</button>
         </Link>
         <div id="forgetPassAndCreate">
-          <a href="./login">Esqueci minha senha</a>
-          <a href="./login">Cadastrar</a>
+          <a href="./esqueci">Esqueci minha senha</a>
+          <a href="./cadastro">Cadastrar</a>
         </div>
         <br />
         <div id="socialLogoImg">
           <a href="./login">
             <img className="sociallogo" src={googlelogo} alt="Logo Google" />{" "}
           </a>
-          <a href="./login">
+          <a
+            href="./login"
+            onClick={(e) => {
+              e.preventDefault();
+              alert("Logar com o Facebook ainda está em desenvolvimento");
+            }}
+          >
             <img
               className="sociallogo"
               src={facebooklogo}
               alt="Logo Facebook"
-            />{" "}
+            />
           </a>
         </div>
         <br />
       </div>
       <footer>
         <p>
-          A3 do primeiro semestre de 2024 para as disciplinas de Sistemas
-          distribuídos e mobile e de Usabilidade, desenvolvimento web, mobile e
-          jogos - Universidade São Judas Tadeu
+          Trabalho de conclusão do primeiro semestre de 2024 para as disciplinas
+          de Sistemas Usabilidade, desenvolvimento web, mobile e jogos -
+          Universidade São Judas Tadeu (01/24)
         </p>
       </footer>
     </div>
