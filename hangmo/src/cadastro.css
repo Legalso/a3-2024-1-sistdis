@@ -1,0 +1,14 @@
+#cadastropage {
+    padding-top: 4rem;
+    justify-content: center;
+    align-items: center;
+    height: 30rem;
+}
+
+.cadastro {
+    margin: 0.6rem;
+}   
+
+#entrarButton {
+    margin: 0.6rem;
+}
