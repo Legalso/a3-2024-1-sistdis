@@ -74,7 +74,7 @@ h1 {
   border: none;
   height: 2.5rem;
   padding: 10px; /* Adiciona um espaçamento interno */
-  color: #ff6b00;
+  color: #fb852f;
 }
 
 #forgetPassAndCreate {
@@ -91,7 +91,7 @@ h1 {
 }
 
 #forgetPassAndCreate a:hover {
-  color: #ff6b00;
+  color: #fb852f;
   /* transform: scale(1.05);
   transition: transform 0.1s ease; */
   text-decoration: none;
@@ -151,8 +151,8 @@ button:active {
   margin-top: 2rem;
   padding: 10px;
   border: 2px solid #d9d9d9;
-  background-color: #ff6b00;
-  border-radius: 2rem;
+  background-color: #fb852f;
+  border-radius: 1rem;
   color: white;
 }
 
