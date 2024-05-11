@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import "./hangmo";
-import logo from "./img/Logo.png";
+import logo from "../img/Logo.png";
 
 function Esqueci() {
   React.useEffect(() => {
@@ -22,7 +22,7 @@ function Esqueci() {
 
   return (
     <div className="App">
-      <a href="./login">
+      <a href="./hangmo/login">
         <img id="logo" src={logo} alt="Logo hangmo" />{" "}
       </a>
 

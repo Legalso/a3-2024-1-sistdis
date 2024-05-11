@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 import "./App.css";
 // import "./login.css";
 import "./hangmo";
-import logo from "./img/Logo.png";
-import googlelogo from "./img/google.png";
-import facebooklogo from "./img/facebook.webp";
+import logo from "../img/Logo.png";
+import googlelogo from "../img/google.png";
+import facebooklogo from "../img/facebook.webp";
 
 function Login() {
   React.useEffect(() => {
@@ -43,12 +43,16 @@ function Login() {
           <button id="entrarButton">Entrar</button>
         </Link>
         <div id="forgetPassAndCreate">
-          <a href="./esqueci">Esqueci minha senha</a>
-          <a href="./cadastro">Cadastrar</a>
+          <a href="./hangmo/esqueci">Esqueci minha senha</a>
+          <a href="./hangmo/cadastro">Cadastrar</a>
         </div>
         <br />
         <div id="socialLogoImg">
-          <a href="./login">
+          <a href="./hangmo/login"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        alert("Logar com o Facebook ainda está em desenvolvimento");
+                      }}>
             <img className="sociallogo" src={googlelogo} alt="Logo Google" />{" "}
           </a>
           <a
