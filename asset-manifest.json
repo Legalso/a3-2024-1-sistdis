@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/a3-2024-1-sistdis-HANGMO/static/css/main.b855edd0.css",
-    "main.js": "/a3-2024-1-sistdis-HANGMO/static/js/main.d04796e4.js",
+    "main.js": "/a3-2024-1-sistdis-HANGMO/static/js/main.5e2a703a.js",
     "static/js/453.ff9ccc94.chunk.js": "/a3-2024-1-sistdis-HANGMO/static/js/453.ff9ccc94.chunk.js",
     "static/media/Logo.png": "/a3-2024-1-sistdis-HANGMO/static/media/Logo.d94e58d9c060ec626afd.png",
     "static/media/facebook.webp": "/a3-2024-1-sistdis-HANGMO/static/media/facebook.0405eead58019bdd0ea6.webp",
     "static/media/google.png": "/a3-2024-1-sistdis-HANGMO/static/media/google.39c52b1bcccb20569aa4.png",
     "index.html": "/a3-2024-1-sistdis-HANGMO/index.html",
     "main.b855edd0.css.map": "/a3-2024-1-sistdis-HANGMO/static/css/main.b855edd0.css.map",
-    "main.d04796e4.js.map": "/a3-2024-1-sistdis-HANGMO/static/js/main.d04796e4.js.map",
+    "main.5e2a703a.js.map": "/a3-2024-1-sistdis-HANGMO/static/js/main.5e2a703a.js.map",
     "453.ff9ccc94.chunk.js.map": "/a3-2024-1-sistdis-HANGMO/static/js/453.ff9ccc94.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b855edd0.css",
-    "static/js/main.d04796e4.js"
+    "static/js/main.5e2a703a.js"
   ]
 }
