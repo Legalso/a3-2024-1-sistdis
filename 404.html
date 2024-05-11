@@ -7,11 +7,11 @@
   </head>
   <body>
     <script>
-      var path = location.href.split('/hangmo')[1];
-      if (!path.startsWith('/hangmo')) {
-        path = '/hangmo' + path;
+      var path = location.href.split('/hangmo').pop();
+      if (!path.startsWith('/')) {
+        path = '/' + path;
       }
-      sessionStorage.redirect = path;
+      sessionStorage.redirect = '/hangmo' + path;
     </script>
   </body>
 </html>
