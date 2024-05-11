@@ -3,19 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>My App</title>
-    <!-- <meta http-equiv="refresh" content="0;URL='/hangmo'"></meta> -->
-  </head>
-  <body>
     <script>
-      var path = location.href.split('/hangmo').pop();
-      if (!path.startsWith('/')) {
-        path = '/' + path;
-      }
-      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
-        sessionStorage.redirect = path;
-      } else {
-        sessionStorage.redirect = '/hangmo' + path;
+      // Check if the URL path is a direct path (i.e., it doesn't contain a #)
+      if (location.pathname.indexOf('#') === -1) {
+        // If it is, then redirect to the same path, but with a # in front
+        location.replace('/#' + location.pathname);
       }
     </script>
+  </head>
+  <body>
   </body>
 </html>
