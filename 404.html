@@ -11,7 +11,11 @@
       if (!path.startsWith('/')) {
         path = '/' + path;
       }
-      sessionStorage.redirect = '/hangmo' + path;
+      if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+        sessionStorage.redirect = path;
+      } else {
+        sessionStorage.redirect = '/hangmo' + path;
+      }
     </script>
   </body>
 </html>
