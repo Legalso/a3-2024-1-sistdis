@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <title>My App</title>
     <script>
-      sessionStorage.redirect = location.href;
+      var path = location.href.split('/hangmo')[1];
+      sessionStorage.redirect = path;
     </script>
     <meta http-equiv="refresh" content="0;URL='/hangmo'"></meta>
   </head>
