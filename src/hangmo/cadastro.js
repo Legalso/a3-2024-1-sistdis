@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 import "./App.css";
 // import "./login.css";
 import "./hangmo";
-import logo from "./img/Logo.png";
-import googlelogo from "./img/google.png";
-import facebooklogo from "./img/facebook.webp";
+import logo from "../img/Logo.png";
+import googlelogo from "../img/google.png";
+import facebooklogo from "../img/facebook.webp";
 
 function Cadastro() {
   React.useEffect(() => {
@@ -16,7 +16,7 @@ function Cadastro() {
   }, []);
   return (
     <div className="App">
-      <a href="./login">
+      <a href="./hangmo/login">
         <img id="logo" src={logo} alt="Logo hangmo" />{" "}
       </a>
 
@@ -48,16 +48,16 @@ function Cadastro() {
             />
           </div>
         </div>
-        <Link to="/hangmo">
+        <Link to="/hangmo/hangmo">
           <button id="entrarButton">Confirmar</button>
         </Link>
         <br />
         <div id="socialLogoImg">
-          <a href="./login">
+          <a href="./hangmo/login">
             <img className="sociallogo" src={googlelogo} alt="Logo Google" />{" "}
           </a>
           <a
-            href="./login"
+            href="./hangmo/login"
             onClick={(e) => {
               e.preventDefault();
               alert("Logar com o Facebook ainda está em desenvolvimento");
