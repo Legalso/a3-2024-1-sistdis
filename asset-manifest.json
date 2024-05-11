@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/a3-2024-1-sistdis-HANGMO/static/css/main.b855edd0.css",
-    "main.js": "/a3-2024-1-sistdis-HANGMO/static/js/main.123d48ad.js",
-    "static/js/453.ff9ccc94.chunk.js": "/a3-2024-1-sistdis-HANGMO/static/js/453.ff9ccc94.chunk.js",
-    "static/media/Logo.png": "/a3-2024-1-sistdis-HANGMO/static/media/Logo.d94e58d9c060ec626afd.png",
-    "static/media/facebook.webp": "/a3-2024-1-sistdis-HANGMO/static/media/facebook.0405eead58019bdd0ea6.webp",
-    "static/media/google.png": "/a3-2024-1-sistdis-HANGMO/static/media/google.39c52b1bcccb20569aa4.png",
-    "index.html": "/a3-2024-1-sistdis-HANGMO/index.html",
-    "main.b855edd0.css.map": "/a3-2024-1-sistdis-HANGMO/static/css/main.b855edd0.css.map",
-    "main.123d48ad.js.map": "/a3-2024-1-sistdis-HANGMO/static/js/main.123d48ad.js.map",
-    "453.ff9ccc94.chunk.js.map": "/a3-2024-1-sistdis-HANGMO/static/js/453.ff9ccc94.chunk.js.map"
+    "main.css": "/hangmo/static/css/main.b855edd0.css",
+    "main.js": "/hangmo/static/js/main.3a6ed333.js",
+    "static/js/453.ff9ccc94.chunk.js": "/hangmo/static/js/453.ff9ccc94.chunk.js",
+    "static/media/Logo.png": "/hangmo/static/media/Logo.d94e58d9c060ec626afd.png",
+    "static/media/facebook.webp": "/hangmo/static/media/facebook.0405eead58019bdd0ea6.webp",
+    "static/media/google.png": "/hangmo/static/media/google.39c52b1bcccb20569aa4.png",
+    "index.html": "/hangmo/index.html",
+    "main.b855edd0.css.map": "/hangmo/static/css/main.b855edd0.css.map",
+    "main.3a6ed333.js.map": "/hangmo/static/js/main.3a6ed333.js.map",
+    "453.ff9ccc94.chunk.js.map": "/hangmo/static/js/453.ff9ccc94.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b855edd0.css",
-    "static/js/main.123d48ad.js"
+    "static/js/main.3a6ed333.js"
   ]
 }
