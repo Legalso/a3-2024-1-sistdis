@@ -1,5 +1,5 @@
 {
-  "homepage": "https://legalso.github.io/a3-2024-1-sistdis-HANGMO",
+  "homepage": "https://legalso.github.io/hangmo/",
   "name": "hangmo",
   "version": "0.1.0",
   "private": true,
@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && copy build\\index.html build\\404.html",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",

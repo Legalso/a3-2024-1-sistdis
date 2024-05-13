@@ -22,7 +22,7 @@ function Esqueci() {
 
   return (
     <div className="App">
-      <a href="./hangmo/login">
+      <a href="../hangmo">
         <img id="logo" src={logo} alt="Logo hangmo" />{" "}
       </a>
 

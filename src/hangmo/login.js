@@ -16,7 +16,7 @@ function Login() {
   }, []);
   return (
     <div className="App">
-      <a href="./login">
+      <a href="./hangmo">
         <img id="logo" src={logo} alt="Logo hangmo" />{" "}
       </a>
 
@@ -39,24 +39,44 @@ function Login() {
             />
           </div>
         </div>
-        <Link to="/hangmo">
+        <Link to="/hangmo/hangmo">
           <button id="entrarButton">Entrar</button>
         </Link>
         <div id="forgetPassAndCreate">
-          <a href="./hangmo/esqueci">Esqueci minha senha</a>
-          <a href="./hangmo/cadastro">Cadastrar</a>
+          <a
+            href={
+              window.location.hostname === "localhost" ||
+              window.location.hostname === "127.0.0.1"
+                ? "./hangmo/esqueci"
+                : "./esqueci"
+            }
+          >
+            Esqueci minha senha
+          </a>
+          <a
+            href={
+              window.location.hostname === "localhost" ||
+              window.location.hostname === "127.0.0.1"
+                ? "./hangmo/cadastro"
+                : "./cadastro"
+            }
+          >
+            Cadastrar
+          </a>
         </div>
         <br />
         <div id="socialLogoImg">
-          <a href="./hangmo/login"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        alert("Logar com o Facebook ainda está em desenvolvimento");
-                      }}>
+          <a
+            href="./hangmo"
+            onClick={(e) => {
+              e.preventDefault();
+              alert("Logar com o Google ainda está em desenvolvimento");
+            }}
+          >
             <img className="sociallogo" src={googlelogo} alt="Logo Google" />{" "}
           </a>
           <a
-            href="./login"
+            href="./hangmo/login"
             onClick={(e) => {
               e.preventDefault();
               alert("Logar com o Facebook ainda está em desenvolvimento");

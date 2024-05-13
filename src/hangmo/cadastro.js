@@ -16,12 +16,12 @@ function Cadastro() {
   }, []);
   return (
     <div className="App">
-      <a href="./hangmo/login">
+      <a href="../hangmo">
         <img id="logo" src={logo} alt="Logo hangmo" />{" "}
       </a>
 
       <div className="container" id="containerCadastro">
-      <h1>Cadastro</h1>
+        <h1>Cadastro</h1>
         <div id="loginpage">
           <h2>E-mail</h2>
           <div>
@@ -48,12 +48,18 @@ function Cadastro() {
             />
           </div>
         </div>
-        <Link to="/hangmo/hangmo">
+        <Link to="/hangmo">
           <button id="entrarButton">Confirmar</button>
         </Link>
         <br />
         <div id="socialLogoImg">
-          <a href="./hangmo/login">
+          <a
+            href="./hangmo/login"
+            onClick={(e) => {
+              e.preventDefault();
+              alert("Logar com o Google ainda está em desenvolvimento");
+            }}
+          >
             <img className="sociallogo" src={googlelogo} alt="Logo Google" />{" "}
           </a>
           <a
