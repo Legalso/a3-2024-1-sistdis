@@ -16,7 +16,7 @@ function Login() {
   }, []);
   return (
     <div className="App">
-      <a href="./hangmo">
+      <a href="./login">
         <img id="logo" src={logo} alt="Logo hangmo" />{" "}
       </a>
 
