@@ -131,9 +131,123 @@ button {
   border-radius: 5px;
   opacity: 0.8;
   letter-spacing: 1px;
-  box-shadow:
-    #bd5003 0px 7px 2px,
-    #000 0px 8px 5px;
+  box-shadow: #bd5003 0px 7px 2px, #000 0px 8px 5px;
+}
+
+#alphabet {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 20rem; /* Adjust this to fit your design */
+}
+
+.letter {
+  width: 2rem;
+  margin: 0.5rem;
+  padding: 0;
+  border: none;
+  transform: rotate(5deg);
+  transform-origin: center;
+  font-family: "Gochi Hand", cursive;
+  text-decoration: none;
+  font-size: 15px;
+  cursor: pointer;
+  padding-bottom: 3px;
+  border-radius: 5px;
+  box-shadow: 0 2px 0 #494a4b;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background-color: #ff6b00;
+  outline: 0;
+}
+
+.letter:hover {
+  background-color: #e7660a;
+  opacity: 1;
+}
+
+.letter:active {
+  top: 4px;
+  box-shadow: #c0392b 0px 3px 2px, #000 0px 3px 5px;
+}
+
+/* Add a grid-area rule for each letter */
+.letter[data-letter="q"] {
+  grid-area: q;
+}
+.letter[data-letter="w"] {
+  grid-area: w;
+}
+.letter[data-letter="e"] {
+  grid-area: e;
+}
+.letter[data-letter="r"] {
+  grid-area: r;
+}
+.letter[data-letter="t"] {
+  grid-area: t;
+}
+.letter[data-letter="y"] {
+  grid-area: y;
+}
+.letter[data-letter="u"] {
+  grid-area: u;
+}
+.letter[data-letter="i"] {
+  grid-area: i;
+}
+.letter[data-letter="o"] {
+  grid-area: o;
+}
+.letter[data-letter="p"] {
+  grid-area: p;
+}
+.letter[data-letter="a"] {
+  grid-area: a;
+}
+.letter[data-letter="s"] {
+  grid-area: s;
+}
+.letter[data-letter="d"] {
+  grid-area: d;
+}
+.letter[data-letter="f"] {
+  grid-area: f;
+}
+.letter[data-letter="g"] {
+  grid-area: g;
+}
+.letter[data-letter="h"] {
+  grid-area: h;
+}
+.letter[data-letter="j"] {
+  grid-area: j;
+}
+.letter[data-letter="k"] {
+  grid-area: k;
+}
+.letter[data-letter="l"] {
+  grid-area: l;
+}
+.letter[data-letter="z"] {
+  grid-area: z;
+}
+.letter[data-letter="x"] {
+  grid-area: x;
+}
+.letter[data-letter="c"] {
+  grid-area: c;
+}
+.letter[data-letter="v"] {
+  grid-area: v;
+}
+.letter[data-letter="b"] {
+  grid-area: b;
+}
+.letter[data-letter="n"] {
+  grid-area: n;
+}
+.letter[data-letter="m"] {
+  grid-area: m;
 }
 
 button:hover {
@@ -142,12 +256,10 @@ button:hover {
 
 button:active {
   top: 4px;
-  box-shadow:
-    #c0392b 0px 3px 2px,
-    #000 0px 3px 5px;
+  box-shadow: #c0392b 0px 3px 2px, #000 0px 3px 5px;
 }
 
-#successMessage{
+#successMessage {
   margin-top: 2rem;
   padding: 10px;
   border: 2px solid #d9d9d9;
