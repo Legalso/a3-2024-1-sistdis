@@ -4,7 +4,7 @@ body {
   overflow: auto;
   background-color: #ffffff;
   color: black;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Regular", sans-serif;
   font-weight: 100;
   font-style: normal;
 }
@@ -19,14 +19,57 @@ h1 {
   background-color: #ffffff;
 }
 
-#logo {
+.logo {
   width: 22rem; /* tamanho do logo */
   height: auto; /* Isso mantém a proporção da imagem */
 }
 
-#logo:hover {
+.logo:hover {
   transform: scale(0.99);
   transition: transform 0.1s ease;
+}
+
+#logoHangmo {
+  width: 10rem;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1rem;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.menu li {
+  float: left;
+}
+
+.menu li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border: 1px solid #fb852f;
+  margin-left: 5%;
+  margin-top: 2rem;
+  border-radius: 10%;
+}
+
+.menu li a:hover {
+  background-color: #fb852f;
+  border-radius: 10%;
 }
 
 .container {
@@ -115,6 +158,32 @@ h1 {
   transition: transform 0.1s ease;
 }
 
+.hangman-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* This will make the div take up the full height of the viewport */
+}
+
+.game-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.sidebar {
+  width: 20%;
+  padding: 10px;
+}
+
+.game {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 button {
   margin-top: 1rem;
   --bg: #ff6b00;
@@ -131,19 +200,165 @@ button {
   border-radius: 5px;
   opacity: 0.8;
   letter-spacing: 1px;
-  box-shadow: #bd5003 0px 7px 2px, #000 0px 8px 5px;
+  box-shadow:
+    #bd5003 0px 7px 2px,
+    #000 0px 8px 5px;
 }
+/* */
+#send {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(20, 20, 20);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 0px 4px #e96405;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+#send .svgIcon {
+  width: 12px;
+  transition-duration: 0.3s;
+}
+
+#send .svgIcon path {
+  fill: white;
+}
+
+#send:hover {
+  width: 140px;
+  border-radius: 50px;
+  transition-duration: 0.3s;
+  background-color: #ff6b00;
+  align-items: center;
+}
+
+#send:hover .svgIcon {
+  /* width: 20px; */
+  transition-duration: 0.3s;
+  transform: translateY(-200%);
+}
+
+#send::before {
+  position: absolute;
+  bottom: -20px;
+  content: "Enviar para a IA";
+  color: white;
+  /* transition-duration: .3s; */
+  font-size: 0px;
+}
+
+#send:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  bottom: unset;
+  /* transform: translateY(-30px); */
+  transition-duration: 0.3s;
+}
+/* */
+
+/* */
+#hangman-theme-group {
+  position: relative;
+}
+
+#hangman-theme {
+  font-size: 16px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 200px;
+  border: none;
+  border-bottom: 1px solid #515151;
+  background: transparent;
+}
+
+#hangman-theme:focus {
+  outline: none;
+}
+
+#hangman-theme-label {
+  color: #999;
+  font-size: 18px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  display: flex;
+}
+
+#hangman-theme-label .label-char {
+  transition: 0.2s ease all;
+  transition-delay: calc(var(--index) * 0.05s);
+}
+
+#hangman-theme:focus ~ #hangman-theme-label .label-char,
+#hangman-theme:valid ~ #hangman-theme-label .label-char {
+  transform: translateY(-20px);
+  font-size: 14px;
+  color: #e96405;
+}
+
+#hangman-theme-bar {
+  position: relative;
+  display: block;
+  width: 200px;
+}
+
+#hangman-theme-bar:before,
+#hangman-theme-bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #e96405;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+#hangman-theme-bar:before {
+  left: 50%;
+}
+
+#hangman-theme-bar:after {
+  right: 50%;
+}
+
+#hangman-theme:focus ~ #hangman-theme-bar:before,
+#hangman-theme:focus ~ #hangman-theme-bar:after {
+  width: 50%;
+}
+/* */
 
 #alphabet {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  width: 20rem; /* Adjust this to fit your design */
+  flex-direction: column;
+  gap: 0.5rem;
+  width: max-content;
+  padding: 1rem;
+}
+
+#alphabet-container {
+  display: flex;
+  justify-content: center;
+}
+
+.alphabet-row {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
 }
 
 .letter {
   width: 2rem;
-  margin: 0.5rem;
   padding: 0;
   border: none;
   transform: rotate(5deg);
@@ -167,87 +382,9 @@ button {
 
 .letter:active {
   top: 4px;
-  box-shadow: #c0392b 0px 3px 2px, #000 0px 3px 5px;
-}
-
-/* Add a grid-area rule for each letter */
-.letter[data-letter="q"] {
-  grid-area: q;
-}
-.letter[data-letter="w"] {
-  grid-area: w;
-}
-.letter[data-letter="e"] {
-  grid-area: e;
-}
-.letter[data-letter="r"] {
-  grid-area: r;
-}
-.letter[data-letter="t"] {
-  grid-area: t;
-}
-.letter[data-letter="y"] {
-  grid-area: y;
-}
-.letter[data-letter="u"] {
-  grid-area: u;
-}
-.letter[data-letter="i"] {
-  grid-area: i;
-}
-.letter[data-letter="o"] {
-  grid-area: o;
-}
-.letter[data-letter="p"] {
-  grid-area: p;
-}
-.letter[data-letter="a"] {
-  grid-area: a;
-}
-.letter[data-letter="s"] {
-  grid-area: s;
-}
-.letter[data-letter="d"] {
-  grid-area: d;
-}
-.letter[data-letter="f"] {
-  grid-area: f;
-}
-.letter[data-letter="g"] {
-  grid-area: g;
-}
-.letter[data-letter="h"] {
-  grid-area: h;
-}
-.letter[data-letter="j"] {
-  grid-area: j;
-}
-.letter[data-letter="k"] {
-  grid-area: k;
-}
-.letter[data-letter="l"] {
-  grid-area: l;
-}
-.letter[data-letter="z"] {
-  grid-area: z;
-}
-.letter[data-letter="x"] {
-  grid-area: x;
-}
-.letter[data-letter="c"] {
-  grid-area: c;
-}
-.letter[data-letter="v"] {
-  grid-area: v;
-}
-.letter[data-letter="b"] {
-  grid-area: b;
-}
-.letter[data-letter="n"] {
-  grid-area: n;
-}
-.letter[data-letter="m"] {
-  grid-area: m;
+  box-shadow:
+    #c0392b 0px 3px 2px,
+    #000 0px 3px 5px;
 }
 
 button:hover {
@@ -256,7 +393,9 @@ button:hover {
 
 button:active {
   top: 4px;
-  box-shadow: #c0392b 0px 3px 2px, #000 0px 3px 5px;
+  box-shadow:
+    #c0392b 0px 3px 2px,
+    #000 0px 3px 5px;
 }
 
 #successMessage {
@@ -267,6 +406,8 @@ button:active {
   border-radius: 1rem;
   color: white;
 }
+
+
 
 footer {
   position: fixed;
@@ -281,3 +422,102 @@ footer {
   text-align: center;
   border-radius: 1rem 1rem 0 0;
 }
+
+/* Estilo para a tabela */
+.table-container {
+  overflow-x: auto; /* Adiciona uma barra de rolagem horizontal caso o conteúdo seja muito largo */
+  margin-left: 10rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse; /* Remove espaçamento entre as células */
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd; /* Adiciona bordas às células */
+  padding: 8px; /* Adiciona espaçamento interno */
+  text-align: left; /* Alinha o texto à esquerda */
+}
+
+.table th {
+  background-color: #f2f2f2; /* Cor de fundo para as células do cabeçalho */
+  font-weight: bold; /* Deixa o texto em negrito */
+}
+
+/* Estilo para as linhas pares */
+.table tr:nth-child(even) {
+  background-color: #f9f9f9; /* Cor de fundo para linhas pares */
+}
+
+/* Estilo para as linhas ímpares */
+.table tr:nth-child(odd) {
+  background-color: #ffffff; /* Cor de fundo para linhas ímpares */
+}
+
+/* Estilo para células selecionadas */
+.table td.selected {
+  background-color: #fb852f; /* Cor de fundo para células selecionadas */
+  color: #ffffff; /* Cor do texto para células selecionadas */
+}
+
+/* Estilo para células hover */
+.table td:hover {
+  background-color: #f5f5f5; /* Cor de fundo ao passar o mouse */
+  cursor: pointer; /* Altera o cursor ao passar o mouse */
+}
+
+/* Estilo para o cabeçalho da tabela */
+.table th {
+  position: sticky; /* Faz com que o cabeçalho permaneça fixo enquanto rola a página */
+  top: 0; /* Posiciona o cabeçalho no topo */
+  z-index: 1; /* Garante que o cabeçalho esteja acima do conteúdo da tabela */
+  background-color: #f2f2f2; /* Cor de fundo para o cabeçalho */
+}
+
+/* Estilo para células do cabeçalho */
+.table th,
+.table td {
+  min-width: 100px; /* Largura mínima para as células */
+  max-width: 200px; /* Largura máxima para as células */
+}
+
+/* Estilo para células com texto longo */
+.table td {
+  white-space: nowrap; /* Impede que o texto longo seja quebrado */
+  overflow: hidden; /* Oculta o texto que transborda */
+  text-overflow: ellipsis; /* Adiciona reticências ao final do texto que não cabe na célula */
+}
+
+.score-table-container {
+  padding-right: 10rem;
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.score-table td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.score-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.score-table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.score-table th {
+  background-color: #f2f2f2;
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+

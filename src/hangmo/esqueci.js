@@ -16,14 +16,16 @@ function Esqueci() {
     } else if (!email.includes("@")) {
       setMessage("E-mail incorreto.");
     } else {
-      setMessage("Você deverá receber um e-mail em breve com instruções para a redefinição de sua senha.");
+      setMessage(
+        "Você deverá receber um e-mail em breve com instruções para a redefinição de sua senha."
+      );
     }
   };
 
   return (
     <div className="App">
       <a href="../hangmo">
-        <img id="logo" src={logo} alt="Logo hangmo" />{" "}
+        <img class="logo" src={logo} alt="Logo hangmo" />{" "}
       </a>
 
       <div className="container">
@@ -42,8 +44,19 @@ function Esqueci() {
         <button id="entrarButton" onClick={handleSend}>
           Enviar
         </button>
-        {message && <p id="successMessage"><strong>{message}</strong></p>}
+        {message && (
+          <p id="successMessage">
+            <strong>{message}</strong>
+          </p>
+        )}
       </div>
+      <footer>
+        <p>
+          Trabalho de conclusão do primeiro semestre de 2024 para as disciplinas
+          de Sistemas Distribuídos e Mobile, Usabilidade, desenvolvimento web,
+          mobile e jogos - Universidade São Judas Tadeu (01/24)
+        </p>
+      </footer>
     </div>
   );
 }

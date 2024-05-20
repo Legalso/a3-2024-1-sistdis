@@ -17,7 +17,7 @@ function Cadastro() {
   return (
     <div className="App">
       <a href="../hangmo">
-        <img id="logo" src={logo} alt="Logo hangmo" />{" "}
+        <img class="logo" src={logo} alt="Logo hangmo" />{" "}
       </a>
 
       <div className="container" id="containerCadastro">
@@ -81,7 +81,7 @@ function Cadastro() {
       <footer>
         <p>
           Trabalho de conclusão do primeiro semestre de 2024 para as disciplinas
-          de Sistemas Usabilidade, desenvolvimento web, mobile e jogos -
+          de Sistemas Distribuídos e Mobile, Usabilidade, desenvolvimento web, mobile e jogos -
           Universidade São Judas Tadeu (01/24)
         </p>
       </footer>
