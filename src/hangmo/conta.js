@@ -9,7 +9,7 @@ function Conta() {
 
   return (
     <div className="App">
-      <a href="./hangmo/hangmo">
+      <a href="./hangmogame">
         <img className="logo" src={logo} alt="Logo hangmo" />
       </a>
 
