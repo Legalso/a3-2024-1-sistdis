@@ -20,7 +20,7 @@ h1 {
 }
 
 .logo {
-  width: 22rem; /* tamanho do logo */
+  width: 15rem; /* tamanho do logo */
   height: auto; /* Isso mantém a proporção da imagem */
 }
 
@@ -79,7 +79,7 @@ h1 {
   justify-content: center;
   align-items: center;
   height: 30rem;
-  width: 50rem;
+  width: 40rem;
   background-color: #ebebebeb;
   padding: 20px;
   margin-left: auto;
@@ -172,9 +172,19 @@ h1 {
   width: 100%;
 }
 
+#tema {
+  font-size: 1.5rem;
+  color: #ff6b00;
+  position: fixed;
+  top: 5rem; /* Ajuste este valor conforme necessário */
+  left: 50%; /* Centraliza o elemento horizontalmente */
+  transform: translateX(-50%); /* Necessário para centralizar corretamente */
+}
+
 .sidebar {
-  width: 20%;
-  padding: 10px;
+  width: 20rem;
+  padding-top: 5rem;
+  padding-right: 15rem;
 }
 
 .game {
@@ -425,9 +435,12 @@ footer {
 
 /* Estilo para a tabela */
 .table-container {
-  overflow-x: auto; /* Adiciona uma barra de rolagem horizontal caso o conteúdo seja muito largo */
-  margin-left: 10rem;
+  /*overflow-x: auto;  Adiciona uma barra de rolagem horizontal caso o conteúdo seja muito largo */
+  width: 15rem;
+  padding-left: 5rem;
+  padding-top: 5rem;
 }
+
 
 .table {
   width: 100%;
@@ -521,3 +534,22 @@ footer {
   text-align: left;
 }
 
+@media (max-width: 767px) {
+  .sidebar {
+    display: none;
+  }
+  .table-container {
+    display: none;
+  }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .game-container {
+    padding-left: 7rem;
+  }
+}

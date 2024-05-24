@@ -54,6 +54,7 @@ function HangmanGame() {
     };
   }, [guesses, gameOver]);
 
+  
   useEffect(() => {
     const checkWin = () => {
       if (secretWord.split("").every((letter) => guesses.includes(letter))) {
@@ -107,7 +108,7 @@ function HangmanGame() {
         </div>
 
         <div className="game">
-          <p>Tema: Apple</p>
+          <p id="tema">Tema: Apple</p>
           {/*RECEBER TEMA DA IA*/}
           <img src={images[errors]} alt={`Hangman step ${errors}`} />
           <p>{displayWord}</p>

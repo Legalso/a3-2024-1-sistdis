@@ -7,6 +7,8 @@ import Cadastro from "./hangmo/cadastro";
 import Hangmo from "./hangmo/hangmo";
 import reportWebVitals from "./reportWebVitals";
 import Esqueci from "./hangmo/esqueci";
+import Conta from "./hangmo/conta";
+import Ranking from "./hangmo/ranking";
 
 const root = document.getElementById("root");
 
@@ -18,6 +20,8 @@ ReactDOM.render(
         <Route path="/hangmo/cadastro" element={<Cadastro />} />
         <Route path="/hangmo/hangmo" element={<Hangmo />} />
         <Route path="/hangmo/esqueci" element={<Esqueci />} />
+        <Route path="/conta" element={<Conta />} />
+        <Route path="/ranking" element={<Ranking />} />
         <Route path="*" element={<Login />} />
       </Routes>
     </Router>
