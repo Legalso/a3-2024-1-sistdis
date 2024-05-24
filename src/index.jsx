@@ -16,10 +16,10 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <Routes>
-        <Route path="/hangmo/login" element={<Login />} />
-        <Route path="/hangmo/cadastro" element={<Cadastro />} />
-        <Route path="/hangmo/hangmo" element={<Hangmo />} />
-        <Route path="/hangmo/esqueci" element={<Esqueci />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/cadastro" element={<Cadastro />} />
+        <Route path="/hangmogame" element={<Hangmo />} />
+        <Route path="/esqueci" element={<Esqueci />} />
         <Route path="/conta" element={<Conta />} />
         <Route path="/ranking" element={<Ranking />} />
         <Route path="*" element={<Login />} />

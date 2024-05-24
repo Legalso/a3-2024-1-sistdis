@@ -1,27 +1,29 @@
-// to run = npm start
-// to get html requests axios
-
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
 import "./App.css";
-// import "./login.css";
-import "./hangmo";
 import logo from "../img/Logo.png";
 
 function Ranking() {
   React.useEffect(() => {
     document.title = "HANGMO - Ranking";
   }, []);
+
+  // Mock data for the ranking
+  const users = Array.from({ length: 100 }, (_, i) => `User ${i + 1}`);
+
   return (
     <div className="App">
       <a href="./hangmo/hangmo">
-        <img class="logo" src={logo} alt="Logo hangmo" />{" "}
+        <img className="logo" src={logo} alt="Logo hangmo" />{" "}
       </a>
 
       <div className="container">
-        <div id="loginpage">
-
-
+        <div id="rankingPage" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+          <h2>Ranking</h2>
+          <ol>
+            {users.map(user => (
+              <li key={user}>{user}</li>
+            ))}
+          </ol>
         </div>
       </div>
       <footer>
@@ -34,4 +36,5 @@ function Ranking() {
     </div>
   );
 }
+
 export default Ranking;

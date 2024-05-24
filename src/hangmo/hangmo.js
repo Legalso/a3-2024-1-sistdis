@@ -83,7 +83,7 @@ function HangmanGame() {
           </li>
         </ul>
       </nav>
-      <a href="../hangmo/hangmo">
+      <a href="../hangmo">
         <img className="logo" id="logoHangmo" src={logo} alt="Logo hangmo" />{" "}
       </a>
       <div className="game-container">

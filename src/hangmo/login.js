@@ -39,35 +39,17 @@ function Login() {
             />
           </div>
         </div>
-        <Link to="/hangmo/hangmo">
+        <Link to="/hangmogame">
           <button id="entrarButton">Entrar</button>
         </Link>
         <div id="forgetPassAndCreate">
-          <a
-            href={
-              window.location.hostname === "localhost" ||
-              window.location.hostname === "127.0.0.1"
-                ? "./hangmo/esqueci"
-                : "./esqueci"
-            }
-          >
-            Esqueci minha senha
-          </a>
-          <a
-            href={
-              window.location.hostname === "localhost" ||
-              window.location.hostname === "127.0.0.1"
-                ? "./hangmo/cadastro"
-                : "./cadastro"
-            }
-          >
-            Cadastrar
-          </a>
+          <a href="./esqueci">Esqueci minha senha</a>
+          <a href="./cadastro">Cadastrar</a>
         </div>
         <br />
         <div id="socialLogoImg">
           <a
-            href="./hangmo"
+            href="./hangmo/hangmo"
             onClick={(e) => {
               e.preventDefault();
               alert("Logar com o Google ainda está em desenvolvimento");
