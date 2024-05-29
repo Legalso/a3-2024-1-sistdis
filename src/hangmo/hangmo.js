@@ -54,7 +54,6 @@ function HangmanGame() {
     };
   }, [guesses, gameOver]);
 
-  
   useEffect(() => {
     const checkWin = () => {
       if (secretWord.split("").every((letter) => guesses.includes(letter))) {
@@ -166,6 +165,20 @@ function HangmanGame() {
           </div>
         </div>
         <div class="sidebar">
+        <div id="hangman-theme-group" style={{ paddingRight: "20px" }}>
+                <input
+                  required=""
+                  type="text"
+                  id="hangman-theme"
+                  onKeyDown={(event) => event.stopPropagation()}
+                />
+                <span id="hangman-theme-bar"></span>
+                <label id="hangman-theme-label">
+                  <span className="label-char" style={{ "--index": "0" }}>
+                    Código do multijogador
+                  </span>
+                </label>
+              </div>  
           <h5>Sua pontuação</h5>
           <div class="score-table-container">
             <table class="score-table">

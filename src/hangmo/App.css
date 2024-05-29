@@ -189,9 +189,9 @@ h1 {
 }
 
 .sidebar {
-  width: 20rem;
+  width: 15rem;
   padding-top: 5rem;
-  padding-right: 15rem;
+  padding-right: 1rem;
 }
 
 .game {
@@ -336,9 +336,9 @@ button {
   bottom: 1px;
   position: absolute;
   background: #e96405;
-  transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
+  transition: 0.2s ease all;
 }
 
 #hangman-theme-bar:before {
@@ -490,7 +490,8 @@ footer {
 
 /* Estilo para o cabeçalho da tabela */
 .table th {
-  position: sticky; /* Faz com que o cabeçalho permaneça fixo enquanto rola a página */
+  position: -webkit-sticky; /* Para Safari */
+  position: sticky; /* Padrão */
   top: 0; /* Posiciona o cabeçalho no topo */
   z-index: 1; /* Garante que o cabeçalho esteja acima do conteúdo da tabela */
   background-color: #f2f2f2; /* Cor de fundo para o cabeçalho */
@@ -543,6 +544,15 @@ footer {
 
 .infom {
   width:100%;
+}
+
+h5 {
+  padding-top: 1rem;
+}
+
+#multiplayerCode {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
 }
 
 
