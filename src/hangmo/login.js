@@ -1,6 +1,3 @@
-// to run = npm start
-// to get html requests axios
-
 import React from "react";
 import { Link } from "react-router-dom";
 import "./App.css";
@@ -14,10 +11,33 @@ function Login() {
   React.useEffect(() => {
     document.title = "HANGMO - Login";
   }, []);
+
+  // Comentando o código relacionado aos endpoints de login
+  // const handleLogin = async () => {
+  //   try {
+  //     // Fazer solicitação POST para endpoint de login
+  //     // await axios.post('url_do_endpoint', { email, password });
+  //     // Redirecionar o usuário após o login
+  //   } catch (error) {
+  //     console.error("Erro ao fazer login:", error);
+  //   }
+  // };
+
+  // const handleGetLogin = async () => {
+  //   try {
+  //     // Fazer solicitação GET para verificar o login do usuário
+  //     // await axios.get('url_do_endpoint');
+  //     // Se o login for válido, redirecionar o usuário
+  //     // Caso contrário, exibir uma mensagem de erro
+  //   } catch (error) {
+  //     console.error("Erro ao verificar login:", error);
+  //   }
+  // };
+
   return (
     <div className="App">
       <a href="./login">
-        <img class="logo" src={logo} alt="Logo hangmo" />{" "}
+        <img className="logo" src={logo} alt="Logo hangmo" />{" "}
       </a>
 
       <div className="container">
@@ -39,6 +59,7 @@ function Login() {
             />
           </div>
         </div>
+        {/* <button id="entrarButton" onClick={handleLogin}>Entrar</button> */}
         <Link to="/hangmogame">
           <button id="entrarButton">Entrar</button>
         </Link>

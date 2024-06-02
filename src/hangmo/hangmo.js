@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import logo from "../img/Logo.png";
 import img0 from "../img/0.jpg";
 import img1 from "../img/1.jpg";
@@ -9,14 +10,29 @@ import img5 from "../img/5.jpg";
 import img6 from "../img/6.jpg";
 
 function HangmanGame() {
-  const secretWord = "apple"; // You can change this to be any word you want
+  const [secretWord, setSecretWord] = useState("");
+  const [themeSent, setThemeSent] = useState(false);
   const [guesses, setGuesses] = useState([]);
   const [errors, setErrors] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [win, setWin] = useState(false);
-  const alphabet = "qwertyuiopasdfghjklzxcvbnm";
+  const [theme, setTheme] = useState("");
 
+  const alphabet = "qwertyuiopasdfghjklzxcvbnm";
   const images = [img0, img1, img2, img3, img4, img5, img6];
+
+  const topPlayers = [
+    { usuario: "Player", pontuacao: 100 },
+    { usuario: "Usuário 2", pontuacao: 85 },
+    { usuario: "Usuário 3", pontuacao: 80 },
+    { usuario: "Usuário 4", pontuacao: 75 },
+    { usuario: "Usuário 5", pontuacao: 70 },
+    { usuario: "Usuário 6", pontuacao: 65 },
+    { usuario: "Usuário 7", pontuacao: 60 },
+    { usuario: "Usuário 8", pontuacao: 55 },
+    { usuario: "Usuário 9", pontuacao: 50 },
+    { usuario: "Usuário 10", pontuacao: 45 }
+  ];
 
   const alphabetRows = [];
   for (let i = 0; i < alphabet.length; i += 7) {
@@ -55,20 +71,40 @@ function HangmanGame() {
   }, [guesses, gameOver]);
 
   useEffect(() => {
-    const checkWin = () => {
-      if (secretWord.split("").every((letter) => guesses.includes(letter))) {
-        setGameOver(true);
+    if (guesses.length > 0) {
+      const wordGuessed = secretWord.split("").every((letter) => guesses.includes(letter));
+      if (wordGuessed) {
         setWin(true);
+        setGameOver(true);
+      }
+    }
+  }, [guesses]);
+
+  useEffect(() => {
+    const fetchWord = async () => {
+      try {
+        const response = await axios.get('https://hangmo-game-ad894dbd8da1.herokuapp.com/get-word');
+        setSecretWord(response.data.palavra);
+      } catch (error) {
+        console.error("Erro ao buscar palavra:", error);
       }
     };
 
-    checkWin();
-  }, [guesses, secretWord]);
+    if (themeSent) {
+      fetchWord();
+    }
+  }, [themeSent]);
 
-  const displayWord = secretWord
-    .split("")
-    .map((letter) => (guesses.includes(letter) ? letter : "_"))
-    .join(" ");
+  const handleThemeSubmit = async () => {
+    if (theme) {
+      try {
+        await axios.post('https://hangmo-game-ad894dbd8da1.herokuapp.com/send-theme', { tema: theme });
+        setThemeSent(true);
+      } catch (error) {
+        console.error("Erro ao enviar tema:", error);
+      }
+    }
+  };
 
   return (
     <div className="hangman-game">
@@ -96,10 +132,10 @@ function HangmanGame() {
               </tr>
             </thead>
             <tbody>
-              {Array.from({ length: 10 }, (_, index) => (
+              {topPlayers.map((player, index) => (
                 <tr key={index}>
-                  <td>Usuário {index + 1}</td>
-                  <td>{Math.floor(Math.random() * 100)}</td>
+                  <td>{player.usuario}</td>
+                  <td>{player.pontuacao}</td>
                 </tr>
               ))}
             </tbody>
@@ -107,32 +143,36 @@ function HangmanGame() {
         </div>
 
         <div className="game">
-          <p id="tema">Tema: Apple</p>
-          {/*RECEBER TEMA DA IA*/}
-          <img src={images[errors]} alt={`Hangman step ${errors}`} />
-          <p>{displayWord}</p>
-          {gameOver && <p>{win ? "Você ganhou!" : "Você perdeu!"}</p>}
-          <div id="alphabet-container">
-            <div id="alphabet">
-              {alphabetRows.map((row, rowIndex) => (
-                <div
-                  key={rowIndex}
-                  className={`alphabet-row ${rowIndex === 3 ? "last-row" : ""}`}
-                >
-                  {row.split("").map((letter) => (
-                    <button
-                      key={letter}
-                      className="letter"
-                      onClick={() => handleGuess(letter)}
-                      disabled={guesses.includes(letter) || gameOver}
+          {!themeSent ? (
+            <p>Envie um tema para a IA para jogar o Hangmo!</p>
+          ) : (
+            <>
+              <p id="tema">Tema: {theme}</p>
+              <img src={images[errors]} alt={`Hangman step ${errors}`} />
+              {gameOver && <p>{win ? "Você ganhou!" : "Você perdeu!"}</p>}
+              <div id="alphabet-container">
+                <div id="alphabet">
+                  {alphabetRows.map((row, rowIndex) => (
+                    <div
+                      key={rowIndex}
+                      className={`alphabet-row ${rowIndex === 3 ? "last-row" : ""}`}
                     >
-                      {letter}
-                    </button>
+                      {row.split("").map((letter) => (
+                        <button
+                          key={letter}
+                          className="letter"
+                          onClick={() => handleGuess(letter)}
+                          disabled={guesses.includes(letter) || gameOver}
+                        >
+                          {letter}
+                        </button>
+                      ))}
+                    </div>
                   ))}
                 </div>
-              ))}
-            </div>
-          </div>
+              </div>
+            </>
+          )}
           <div>
             <label htmlFor="hangman-theme"></label> <br />
             <div
@@ -147,45 +187,47 @@ function HangmanGame() {
                   required=""
                   type="text"
                   id="hangman-theme"
+                  value={theme}
+                  onChange={(e) => setTheme(e.target.value)}
                   onKeyDown={(event) => event.stopPropagation()}
                 />
                 <span id="hangman-theme-bar"></span>
                 <label id="hangman-theme-label">
                   <span className="label-char" style={{ "--index": "0" }}>
-                    Tema (alimentado por IA)
+                    {themeSent ? "Altere o tema do jogo:" : "Tema alimentado por IA"}
                   </span>
                 </label>
               </div>
-              <button id="send" type="submit">
-                <svg class="svgIcon" viewBox="0 0 384 512">
+              <button id="send" type="submit" onClick={handleThemeSubmit}>
+                <svg className="svgIcon" viewBox="0 0 384 512">
                   <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
                 </svg>
               </button>
             </div>
           </div>
         </div>
-        <div class="sidebar">
-        <div id="hangman-theme-group" style={{ paddingRight: "20px" }}>
-                <input
-                  required=""
-                  type="text"
-                  id="hangman-theme"
-                  onKeyDown={(event) => event.stopPropagation()}
-                />
-                <span id="hangman-theme-bar"></span>
-                <label id="hangman-theme-label">
-                  <span className="label-char" style={{ "--index": "0" }}>
-                    Código do multijogador
-                  </span>
-                </label>
-              </div>  
+        <div className="sidebar">
+          <div id="hangman-theme-group" style={{ paddingRight: "20px" }}>
+            <input
+              required=""
+              type="text"
+              id="hangman-theme"
+              onKeyDown={(event) => event.stopPropagation()}
+            />
+            <span id="hangman-theme-bar"></span>
+            <label id="hangman-theme-label">
+              <span className="label-char" style={{ "--index": "0" }}>
+                Código do multijogador
+              </span>
+            </label>
+          </div>
           <h5>Sua pontuação</h5>
-          <div class="score-table-container">
-            <table class="score-table">
+          <div className="score-table-container">
+            <table className="score-table">
               <tbody>
                 <tr>
                   <td>Jogador:</td>
-                  <td>Nome</td>
+                  <td>Player</td>
                 </tr>
                 <tr>
                   <td>Pontuação:</td>
