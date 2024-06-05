@@ -123,7 +123,7 @@ function HangmanGame() {
       </a>
       <div className="game-container">
         <div className="table-container">
-          <h5>Top 10 Hangmo players</h5>
+          <h5>Top 10 players</h5>
           <table className="table">
             <thead>
               <tr>
@@ -144,7 +144,7 @@ function HangmanGame() {
 
         <div className="game">
           {!themeSent ? (
-            <p>Envie um tema para a IA para jogar o Hangmo!</p>
+            <p id = "Enviar">Envie um tema para a IA para jogar o Hangmo!</p>
           ) : (
             <>
               <p id="tema">Tema: {theme}</p>
