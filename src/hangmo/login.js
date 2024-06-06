@@ -1,38 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Use useNavigate instead of Navigate
 import "./App.css";
-// import "./login.css";
 import "./hangmo";
 import logo from "../img/Logo.png";
 import googlelogo from "../img/google.png";
 import facebooklogo from "../img/facebook.webp";
+import axios from "axios";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate(); // Initialize navigate
+
   React.useEffect(() => {
     document.title = "HANGMO - Login";
   }, []);
 
-  // Comentando o código relacionado aos endpoints de login
-  // const handleLogin = async () => {
-  //   try {
-  //     // Fazer solicitação POST para endpoint de login
-  //     // await axios.post('url_do_endpoint', { email, password });
-  //     // Redirecionar o usuário após o login
-  //   } catch (error) {
-  //     console.error("Erro ao fazer login:", error);
-  //   }
-  // };
-
-  // const handleGetLogin = async () => {
-  //   try {
-  //     // Fazer solicitação GET para verificar o login do usuário
-  //     // await axios.get('url_do_endpoint');
-  //     // Se o login for válido, redirecionar o usuário
-  //     // Caso contrário, exibir uma mensagem de erro
-  //   } catch (error) {
-  //     console.error("Erro ao verificar login:", error);
-  //   }
-  // };
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://hangmo-game-ad894dbd8da1.herokuapp.com/login", // ?useSessionCookie=true
+        { email, password }
+      );
+      if (response.status === 200) {
+        // Armazene um token de autenticação fictício no localStorage
+        localStorage.setItem('authToken', 'loggedIn');
+        navigate("/hangmogame"); // Use navigate instead of history
+      }
+    } catch (error) {
+      console.error("Erro ao fazer login:", error);
+      alert("E-mail ou senha incorretos, tente novamente.")
+    }
+  };
 
   return (
     <div className="App">
@@ -41,13 +41,15 @@ function Login() {
       </a>
 
       <div className="container">
-        <div id="loginpage">
+        <form id="loginpage" onSubmit={handleLogin}>
           <h2>E-mail</h2>
           <div>
             <input
               className="login"
               type="email"
               placeholder="Digite seu e-mail..."
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <h2>Senha</h2>
@@ -56,13 +58,14 @@ function Login() {
               className="login"
               type="password"
               placeholder="Digite sua senha..."
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-        </div>
-        {/* <button id="entrarButton" onClick={handleLogin}>Entrar</button> */}
-        <Link to="/hangmogame">
-          <button id="entrarButton">Entrar</button>
-        </Link>
+          <button id="entrarButton" type="submit">
+            Entrar
+          </button>
+        </form>
         <div id="forgetPassAndCreate">
           <a href="./esqueci">Esqueci minha senha</a>
           <a href="./cadastro">Cadastrar</a>

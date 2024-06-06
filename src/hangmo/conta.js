@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import logo from "../img/Logo.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 const { faker } = require("@faker-js/faker/locale/pt_BR");
@@ -7,6 +8,7 @@ function Conta() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [cell, setCell] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = "HANGMO - Conta";
@@ -15,7 +17,14 @@ function Conta() {
     setCell(faker.phone.phoneFormats);
   }, []);
 
+  const handleLogout = () => {
+    // Remova o token de autenticação do localStorage
+    localStorage.removeItem('authToken');
+    navigate('/hangmo');
+  };
+
   return (
+    
     <div className="App">
       <a href="./hangmogame">
         <img className="logo" src={logo} alt="Logo hangmo" />
@@ -58,7 +67,10 @@ function Conta() {
             <label>Cor favorita: </label>
             <input className="infom" type="color" />
             <a href="/mudar-senha">Mudar senha</a>
-            <button type="submit">Salvar</button>
+            <div>
+            <button type="submit" style={{ marginRight: '20px' }}>Salvar</button>
+            <button type="button" onClick={handleLogout}>Deslogar</button>
+            </div>
           </div>
         </div>
       </div>
