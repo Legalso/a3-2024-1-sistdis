@@ -83,7 +83,7 @@ function HangmanGame() {
   useEffect(() => {
     const fetchWord = async () => {
       try {
-        const response = await axios.get('https://hangmo-game-ad894dbd8da1.herokuapp.com/get-word');
+        const response = await axios.get('https://hangmo-game-ad894dbd8da1.herokuapp.com/WordGeneration');
         setSecretWord(response.data.palavra);
       } catch (error) {
         console.error("Erro ao buscar palavra:", error);
@@ -98,7 +98,7 @@ function HangmanGame() {
   const handleThemeSubmit = async () => {
     if (theme) {
       try {
-        await axios.post('https://hangmo-game-ad894dbd8da1.herokuapp.com/send-theme', { tema: theme });
+        await axios.post('https://hangmo-game-ad894dbd8da1.herokuapp.com/WordGeneration', { tema: theme });
         setThemeSent(true);
       } catch (error) {
         console.error("Erro ao enviar tema:", error);
@@ -111,10 +111,10 @@ function HangmanGame() {
       <nav className="menu">
         <ul>
           <li>
-            <a href="/conta">Conta</a>
+            <a href="/Conta">Conta</a>
           </li>
           <li>
-            <a href="/ranking">Ranking</a>
+            <a href="/Ranking">Ranking</a>
           </li>
         </ul>
       </nav>

@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../img/Logo.png";
 import "bootstrap/dist/css/bootstrap.min.css";
+const { faker } = require("@faker-js/faker/locale/pt_BR");
 
 function Conta() {
-  React.useEffect(() => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [cell, setCell] = useState("");
+
+  useEffect(() => {
     document.title = "HANGMO - Conta";
+    setUsername(faker.internet.userName());
+    setEmail(faker.internet.email());
+    setCell(faker.phone.phoneFormats);
   }, []);
 
   return (
@@ -29,12 +37,21 @@ function Conta() {
               className="infom"
               type="text"
               placeholder="Escreva seu nome aqui"
+              value={username}
             />
             <label>Email: </label>
             <input
               className="infom"
               type="email"
               placeholder="xpto@example.com"
+              value={email}
+            />
+            <label>Celular: </label>
+            <input
+              className="infom"
+              type="tel"
+              placeholder="Insira seu número de celular"
+              value={cell}
             />
             <label>Aniversário: </label>
             <input className="infom" type="date" />
@@ -45,12 +62,6 @@ function Conta() {
           </div>
         </div>
       </div>
-
-      <footer>
-        <p>
-          Trabalho de conclusão do primeiro semestre de 2024 para as disciplinas
-        </p>
-      </footer>
     </div>
   );
 }
