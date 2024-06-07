@@ -81,8 +81,8 @@ function Cadastro() {
       <footer>
         <p>
           Trabalho de conclusão do primeiro semestre de 2024 para as disciplinas
-          de Sistemas Distribuídos e Mobile, Usabilidade, desenvolvimento web, mobile e jogos -
-          Universidade São Judas Tadeu (01/24)
+          de Sistemas Distribuídos e Mobile, Usabilidade, desenvolvimento web,
+          mobile e jogos - Universidade São Judas Tadeu (01/24)
         </p>
       </footer>
     </div>

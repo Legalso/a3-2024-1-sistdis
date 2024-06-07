@@ -7,6 +7,7 @@ import googlelogo from "../img/google.png";
 import facebooklogo from "../img/facebook.webp";
 import axios from "axios";
 
+
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,17 +21,20 @@ function Login() {
     event.preventDefault();
     try {
       const response = await axios.post(
-        "https://hangmo-game-ad894dbd8da1.herokuapp.com/login", // ?useSessionCookie=true
+        "https://hangmo-game-ad894dbd8da1.herokuapp.com/login?useSessionCookies=true",
         { email, password }
       );
       if (response.status === 200) {
-        // Armazene um token de autenticação fictício no localStorage
-        localStorage.setItem('authToken', 'loggedIn');
+        // Store a mock authentication token in localStorage
+        localStorage.setItem("authToken", "loggedIn");
+        // Set authToken globally
+        window.authToken = true;
+        global.authToken = true;
         navigate("/hangmogame"); // Use navigate instead of history
       }
     } catch (error) {
       console.error("Erro ao fazer login:", error);
-      alert("E-mail ou senha incorretos, tente novamente.")
+      alert("E-mail ou senha incorretos, tente novamente.");
     }
   };
 

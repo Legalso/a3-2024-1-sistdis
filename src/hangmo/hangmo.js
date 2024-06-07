@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import axios from "axios";
 import logo from "../img/Logo.png";
 import img0 from "../img/0.jpg";
 import img1 from "../img/1.jpg";
@@ -31,7 +31,7 @@ function HangmanGame() {
     { usuario: "Usuário 7", pontuacao: 60 },
     { usuario: "Usuário 8", pontuacao: 55 },
     { usuario: "Usuário 9", pontuacao: 50 },
-    { usuario: "Usuário 10", pontuacao: 45 }
+    { usuario: "Usuário 10", pontuacao: 45 },
   ];
 
   const alphabetRows = [];
@@ -72,7 +72,9 @@ function HangmanGame() {
 
   useEffect(() => {
     if (guesses.length > 0) {
-      const wordGuessed = secretWord.split("").every((letter) => guesses.includes(letter));
+      const wordGuessed = secretWord
+        .split("")
+        .every((letter) => guesses.includes(letter));
       if (wordGuessed) {
         setWin(true);
         setGameOver(true);
@@ -83,7 +85,9 @@ function HangmanGame() {
   useEffect(() => {
     const fetchWord = async () => {
       try {
-        const response = await axios.get('https://hangmo-game-ad894dbd8da1.herokuapp.com/WordGeneration');
+        const response = await axios.get(
+          "https://hangmo-game-ad894dbd8da1.herokuapp.com/WordGeneration"
+        );
         setSecretWord(response.data.palavra);
       } catch (error) {
         console.error("Erro ao buscar palavra:", error);
@@ -96,9 +100,23 @@ function HangmanGame() {
   }, [themeSent]);
 
   const handleThemeSubmit = async () => {
+    // if (theme) {
+    //   try {
+    //     await axios.post(
+    //       "https://hangmo-game-ad894dbd8da1.herokuapp.com/WordGeneration",
+    //       { tema: theme }
+    //     );
+    //     setThemeSent(true);
+    //   } catch (error) {
+    //     console.error("Erro ao enviar tema:", error);
+    //   }
+    // }
     if (theme) {
       try {
-        await axios.post('https://hangmo-game-ad894dbd8da1.herokuapp.com/WordGeneration', { tema: theme });
+        await axios.get(
+          "https://hangmo-game-ad894dbd8da1.herokuapp.com/WordGeneration/prompt:" + theme,
+          { tema: theme }
+        );
         setThemeSent(true);
       } catch (error) {
         console.error("Erro ao enviar tema:", error);
@@ -144,7 +162,7 @@ function HangmanGame() {
 
         <div className="game">
           {!themeSent ? (
-            <p id = "Enviar">Envie um tema para a IA para jogar o Hangmo!</p>
+            <p id="Enviar">Envie um tema para a IA para jogar o Hangmo!</p>
           ) : (
             <>
               <p id="tema">Tema: {theme}</p>
@@ -194,7 +212,9 @@ function HangmanGame() {
                 <span id="hangman-theme-bar"></span>
                 <label id="hangman-theme-label">
                   <span className="label-char" style={{ "--index": "0" }}>
-                    {themeSent ? "Altere o tema do jogo:" : "Tema alimentado por IA"}
+                    {themeSent
+                      ? "Altere o tema do jogo:"
+                      : "Tema alimentado por IA"}
                   </span>
                 </label>
               </div>
