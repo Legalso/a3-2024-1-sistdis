@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { makeGuess, createGame } from "../api/gameService";
 import axios from "axios";
 import logo from "../img/Logo.png";
 import img0 from "../img/0.jpg";
@@ -10,6 +11,12 @@ import img5 from "../img/5.jpg";
 import img6 from "../img/6.jpg";
 
 function HangmanGame() {
+  const [displayWord, setDisplayWord] = useState("");
+  const [game, setGame] = useState(null);
+  const [gameId, setGameId] = useState('');
+  const [wrongGuessCount, setWrongGuessCount] = useState('');
+  const [wordLength, setWordLength] = useState('');
+  const [coordinates, setCoordinates] = useState([]);
   const [secretWord, setSecretWord] = useState("");
   const [themeSent, setThemeSent] = useState(false);
   const [guesses, setGuesses] = useState([]);
@@ -34,32 +41,88 @@ function HangmanGame() {
     { usuario: "Usuário 10", pontuacao: 45 },
   ];
 
+  const handleCreateGame = async () => {
+    if (theme) {
+      try {
+        const gameData = await createGame(theme);
+        setGame(gameData);
+        setGameId(gameData.gameId);
+        setWordLength(gameData.wordLength);
+        setWrongGuessCount(gameData.wrongGuessCount);        
+        localStorage.setItem("gameData", JSON.stringify(gameData))
+        setThemeSent(true);
+        console.log(gameData);
+      } catch (error) {
+        console.error("Erro ao enviar tema:", error);
+      }
+    }
+  };
+  
+  useEffect(() => {
+    if (game) {
+      setDisplayWord("_".repeat(game.wordLength));
+    }
+  }, [game]);
+
+  const handleMakeGuess = async (letter) => {
+    try{
+      const guessData = await makeGuess(gameId, letter);
+      setWrongGuessCount(guessData.wrongGuessCount);
+      setCoordinates(guessData.coordinates);
+
+      if(guessData.isPresent){
+        let newDisplayWord = displayWord.split("");
+        guessData.coordinates.forEach(coord => {
+          newDisplayWord[coord.position] = coord.character;
+        });
+        setDisplayWord(newDisplayWord.join(""));    
+      }
+
+      if (guessData.gameStatus === "Win") {
+        setWin(true);
+        setGameOver(true);
+      } else if (guessData.gameStatus === "Loss") {
+        setGameOver(true);
+      }
+    }catch(error){
+      
+      console.log(error);
+    }
+
+  };
+
   const alphabetRows = [];
   for (let i = 0; i < alphabet.length; i += 7) {
     alphabetRows.push(alphabet.slice(i, Math.min(i + 7, alphabet.length)));
   }
 
-  const handleGuess = (letter) => {
-    if (gameOver || guesses.includes(letter)) return;
-
-    setGuesses((prevGuesses) => [...prevGuesses, letter]);
-
-    if (!secretWord.includes(letter)) {
-      setErrors((prevErrors) => {
-        const newErrors = prevErrors + 1;
-        if (newErrors === 6) {
-          setGameOver(true);
-        }
-        return newErrors;
-      });
+  const handleLetterClick = (letter) => {
+    if (!gameOver && !displayWord.includes(letter) && !coordinates.some(coord => coord.character === letter)) {
+      handleMakeGuess(letter);
     }
   };
+
+//  const handleGuess = (letter) => {
+//    if (gameOver || guesses.includes(letter)) return;
+
+//    setGuesses((prevGuesses) => [...prevGuesses, letter]);
+
+//    if (!secretWord.includes(letter)) {
+//      setErrors((prevErrors) => {
+//        const newErrors = prevErrors + 1;
+//        if (newErrors === 6) {
+ //         setGameOver(true);
+//        }
+//        return newErrors;
+//      });
+//    }
+//  };
 
   useEffect(() => {
     const handleKeyDown = (event) => {
       const key = event.key.toLowerCase();
       if (key.length === 1 && key >= "a" && key <= "z") {
-        handleGuess(key);
+        handleLetterClick(key);
       }
     };
 
@@ -82,47 +145,23 @@ function HangmanGame() {
     }
   }, [guesses]);
 
-  useEffect(() => {
-    const fetchWord = async () => {
-      try {
-        const response = await axios.get(
-          "https://hangmo-game-ad894dbd8da1.herokuapp.com/WordGeneration"
-        );
-        setSecretWord(response.data.palavra);
-      } catch (error) {
-        console.error("Erro ao buscar palavra:", error);
-      }
-    };
+ // useEffect(() => {
+ //   const fetchWord = async () => {
+ //     try {
+ //       const response = await axios.get(
+ //         "https://hangmo-game-ad894dbd8da1.herokuapp.com/WordGeneration"
+ //       );
+ //       setSecretWord(response.data.palavra);
+ //     } catch (error) {
+ //       console.error("Erro ao buscar palavra:", error);
+ //     }
+ //   };
 
-    if (themeSent) {
-      fetchWord();
-    }
-  }, [themeSent]);
+ //   if (themeSent) {
+ //     fetchWord();
+ //   }
+ // }, [themeSent]);
 
-  const handleThemeSubmit = async () => {
-    // if (theme) {
-    //   try {
-    //     await axios.post(
-    //       "https://hangmo-game-ad894dbd8da1.herokuapp.com/WordGeneration",
-    //       { tema: theme }
-    //     );
-    //     setThemeSent(true);
-    //   } catch (error) {
-    //     console.error("Erro ao enviar tema:", error);
-    //   }
-    // }
-    if (theme) {
-      try {
-        await axios.get(
-          "https://hangmo-game-ad894dbd8da1.herokuapp.com/WordGeneration/prompt:" + theme,
-          { tema: theme }
-        );
-        setThemeSent(true);
-      } catch (error) {
-        console.error("Erro ao enviar tema:", error);
-      }
-    }
-  };
 
   return (
     <div className="hangman-game">
@@ -166,7 +205,8 @@ function HangmanGame() {
           ) : (
             <>
               <p id="tema">Tema: {theme}</p>
-              <img src={images[errors]} alt={`Hangman step ${errors}`} />
+              <img src={images[wrongGuessCount]} alt={`Hangman step ${wrongGuessCount}`} />
+              <p>{displayWord}</p>
               {gameOver && <p>{win ? "Você ganhou!" : "Você perdeu!"}</p>}
               <div id="alphabet-container">
                 <div id="alphabet">
@@ -179,7 +219,7 @@ function HangmanGame() {
                         <button
                           key={letter}
                           className="letter"
-                          onClick={() => handleGuess(letter)}
+                          onClick={() => handleLetterClick(letter)}
                           disabled={guesses.includes(letter) || gameOver}
                         >
                           {letter}
@@ -218,7 +258,7 @@ function HangmanGame() {
                   </span>
                 </label>
               </div>
-              <button id="send" type="submit" onClick={handleThemeSubmit}>
+              <button id="send" type="submit" onClick={handleCreateGame}>
                 <svg className="svgIcon" viewBox="0 0 384 512">
                   <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
                 </svg>

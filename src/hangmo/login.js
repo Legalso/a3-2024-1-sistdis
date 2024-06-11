@@ -6,6 +6,7 @@ import logo from "../img/Logo.png";
 import googlelogo from "../img/google.png";
 import facebooklogo from "../img/facebook.webp";
 import axios from "axios";
+import apiClient from "../api/apiClient";
 
 
 function Login() {
@@ -20,8 +21,8 @@ function Login() {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "https://hangmo-game-ad894dbd8da1.herokuapp.com/login?useSessionCookies=true",
+      const response = await apiClient.post(
+        "/login?useSessionCookies=true",
         { email, password }
       );
       if (response.status === 200) {
