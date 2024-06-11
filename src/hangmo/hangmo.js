@@ -15,6 +15,7 @@ function HangmanGame() {
   const [game, setGame] = useState(null);
   const [gameId, setGameId] = useState('');
   const [wrongGuessCount, setWrongGuessCount] = useState('');
+  const [gameResult, setGameResult] = useState("");
   const [wordLength, setWordLength] = useState('');
   const [coordinates, setCoordinates] = useState([]);
   const [secretWord, setSecretWord] = useState("");
@@ -51,7 +52,6 @@ function HangmanGame() {
         setWrongGuessCount(gameData.wrongGuessCount);        
         localStorage.setItem("gameData", JSON.stringify(gameData))
         setThemeSent(true);
-        console.log(gameData);
       } catch (error) {
         console.error("Erro ao enviar tema:", error);
       }
@@ -69,6 +69,7 @@ function HangmanGame() {
       const guessData = await makeGuess(gameId, letter);
       setWrongGuessCount(guessData.wrongGuessCount);
       setCoordinates(guessData.coordinates);
+      setGameResult(guessData.gameResult);
 
       if(guessData.isPresent){
         let newDisplayWord = displayWord.split("");
@@ -78,10 +79,10 @@ function HangmanGame() {
         setDisplayWord(newDisplayWord.join(""));    
       }
 
-      if (guessData.gameStatus === "Win") {
+      if (guessData.gameResult === "Win") {
         setWin(true);
         setGameOver(true);
-      } else if (guessData.gameStatus === "Loss") {
+      } else if (guessData.gameResult === "Loss") {
         setGameOver(true);
       }
     }catch(error){
@@ -133,17 +134,17 @@ function HangmanGame() {
     };
   }, [guesses, gameOver]);
 
-  useEffect(() => {
-    if (guesses.length > 0) {
-      const wordGuessed = secretWord
-        .split("")
-        .every((letter) => guesses.includes(letter));
-      if (wordGuessed) {
-        setWin(true);
-        setGameOver(true);
-      }
-    }
-  }, [guesses]);
+ // useEffect(() => {
+ //   if (guesses.length > 0) {
+ //     const wordGuessed = secretWord
+ //       .split("")
+ //       .every((letter) => guesses.includes(letter));
+ //     if (wordGuessed) {
+ //       setWin(true);
+ //       setGameOver(true);
+ //     }
+ //   }
+ // }, [guesses]);
 
  // useEffect(() => {
  //   const fetchWord = async () => {
