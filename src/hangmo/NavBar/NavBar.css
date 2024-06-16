@@ -1,0 +1,54 @@
+.navbar-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 20px;
+  height: 27vh;
+  margin-bottom: 20px;
+
+  overflow: hidden;
+  width: 100%;
+
+
+
+}
+.navbar-left {
+  display: flex;
+  
+
+}
+
+.navbar-button {
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  border: 1px solid #fb852f;
+  margin-left: 5%;
+  margin-top: 2rem;
+  border-radius: 10%;
+}
+
+.navbar-button:hover {
+  color : black;
+  background-color: #fb852f;
+  border-radius: 10%;
+}
+
+.navbar-center {
+
+
+}
+
+.navbar-logo {  
+  height: 20rem;
+}
+
+
+.navbar-logo:hover {
+  transform: scale(0.99);
+  transition: transform 0.1s ease;
+}
+
+

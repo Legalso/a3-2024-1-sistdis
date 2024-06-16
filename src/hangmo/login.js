@@ -21,10 +21,7 @@ function Login() {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const response = await apiClient.post(
-        "/login?useSessionCookies=true",
-        { email, password }
-      );
+      const response = await apiClient.post("/login?useSessionCookies=true", { email, password });
       if (response.status === 200) {
         // Store a mock authentication token in localStorage
         localStorage.setItem("authToken", "loggedIn");
