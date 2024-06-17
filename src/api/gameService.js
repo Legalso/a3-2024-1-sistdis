@@ -19,3 +19,14 @@ export const makeGuess = async (gameId, letter) => {
       throw error;
     }
   };
+
+  export const login = async (email, password) =>{
+    try{
+      const response = await apiClient.post('/login?useSessionCookies=true',{email, password}, {withCredentials: true});
+      return response;
+    }catch(error){
+      console.error("Login Error")
+    }
+
+ };
+
