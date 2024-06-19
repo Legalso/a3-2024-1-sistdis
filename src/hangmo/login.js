@@ -7,6 +7,7 @@ import googlelogo from "../img/google.png";
 import facebooklogo from "../img/facebook.webp";
 import axios from "axios";
 import apiClient from "../api/apiClient";
+import { login } from "../api/gameService";
 
 
 function Login() {
@@ -21,13 +22,9 @@ function Login() {
   const handleLogin = async (event) => {
     event.preventDefault();
     try {
-      const response = await apiClient.post("/login?useSessionCookies=true", { email, password });
+      const response = await login(email, password);
       if (response.status === 200) {
-        // Store a mock authentication token in localStorage
-        localStorage.setItem("authToken", "loggedIn");
-        // Set authToken globally
-        window.authToken = true;
-        global.authToken = true;
+
         navigate("/hangmogame"); // Use navigate instead of history
       }
     } catch (error) {

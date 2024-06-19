@@ -2,7 +2,8 @@ html,
 body {
   height: 100%;
   overflow: auto;
-  background-color: #ffffff;
+  
+  
   color: black;
   font-family: "Roboto Regular", sans-serif;
   font-weight: 100;
@@ -23,6 +24,7 @@ h1 {
 
 
 .container {
+  
   width: 100%;
   color: black;
   display: flex;
@@ -125,10 +127,13 @@ h1 {
   transition: transform 0.1s ease;
 }
 
+
 .hangman-game {
   display: flex;
   flex-direction: column;
   margin-bottom: 10rem;
+  z-index: 1;
+  
    /* This will make the div take up the full height of the viewport */
   
 }
@@ -154,6 +159,7 @@ h1 {
 }
 
 .game{ 
+  
   display: flex;
   flex-direction: column;
   align-items: center;

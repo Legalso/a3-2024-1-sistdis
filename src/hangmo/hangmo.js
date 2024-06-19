@@ -164,7 +164,7 @@ function HangmanGame() {
     <div className="hangman-game">      
       <div className="game-container">
         <GameRank   topPlayers={topPlayers}  />
-        
+         
           <section className="game" >
             {!themeSent ? (
               <div>
